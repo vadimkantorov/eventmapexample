@@ -1,0 +1,22 @@
+data_dir: .
+
+defaults:
+  - scope:
+      path: "robots.txt"
+
+  -
+    scope:
+      path: "data/campaigns/*/*.md"
+    values:
+      permalink: /:basename/
+      layout: events
+
+  -
+    scope:
+      path: "data/index/index.md"
+    values:
+      permalink: /index.html
+      layout: events
+
+plugins:
+  - jekyll-optional-front-matter
