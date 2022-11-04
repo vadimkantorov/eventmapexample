@@ -5,7 +5,7 @@
 
 An event map consists of the main page and of campaign pages. Each campaign consists of multiple events. The main page lists all events from all campaigns.
 
-See an example of an event map at https://vadimkantorov.github.io/eventmapexample, and of its contents at https://github.com/vadimkantorov/eventmapexample (based on the content of https://taplink.cc/stopmurderization and https://www.facebook.com/freerussiansglobal).
+See an example of an event map at https://vadimkantorov.github.io/eventmaptest, and its contents at https://github.com/vadimkantorov/eventmaptest (its [`data`](https://github.com/vadimkantorov/eventmaptest/tree/gh-pages/data) is based on the content of https://taplink.cc/stopmurderization and https://www.facebook.com/freerussiansglobal).
 
 Below are described the file formats and the directory structure providing information about campaigns, events and the main page.
 
