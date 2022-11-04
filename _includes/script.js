@@ -84,7 +84,7 @@ function populate_map(map, events)
         markers.push(marker);
     }
 
-    const quantiles = (arr, p) => arr.sort() && [arr[Math.floor(p * arr.length)], arr[Math.floor((1 - p) * arr.length)]];
+    const quantiles = (arr, p) => arr.sort((a, b) => a - b) && [arr[Math.floor(p * arr.length)], arr[Math.floor((1 - p) * arr.length)]];
     
     const [latl, latr] = quantiles(markers.map(marker => marker.getLatLng().lat), 0.1);
     const [lonl, lonr] = quantiles(markers.map(marker => marker.getLatLng().lng), 0.1);
