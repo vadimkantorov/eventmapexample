@@ -209,7 +209,7 @@
             {% assign photos = "" | split: "," %}
             {% if event.photos %}
                 {% if event.photos.first %}
-                    {% assign event_photos = elsif event.photos %}
+                    {% assign event_photos = event.photos %}
                 {% else %}
                     {% assign event_photos = event.photos | remove: " " | split: ";" %}
                 {% endif %}
