@@ -1,3 +1,6 @@
+var mapmarkers = {};
+var slideshow = null;
+
 function apply_geo_filter(search, update_filter_field = false)
 {
     if(update_filter_field)
@@ -32,18 +35,6 @@ function choose_random_event(markers_within_keys)
     };
 }
 
-function init_map(id)
-{
-    const map = L.map(id).setView([20, 0], 2);
-    L.tileLayer(decodeURI(document.getElementById('link_tiles').href), {attribution: document.getElementById('map_copyright').outerHTML.replace('hidden', ''), maxZoom: 19 }).addTo(map);
-    map.on('popupopen', e =>
-    {
-        e.popup._closeButton.removeAttribute("href");
-        e.popup._closeButton.style.cursor = "pointer";
-    });
-    return map;
-}
-
 function marker_onclick(e, slideshow = true)
 {
     const marker = e.target;
@@ -64,8 +55,16 @@ function marker_onclick(e, slideshow = true)
     }
 }
 
-function populate_map(map, events)
+function init_and_populate_map(id, events)
 {
+    const map = L.map(id).setView([20, 0], 2);
+    L.tileLayer(decodeURI(document.getElementById('link_tiles').href), {attribution: document.getElementById('map_copyright').outerHTML.replace('hidden', ''), maxZoom: 19 }).addTo(map);
+    map.on('popupopen', e =>
+    {
+        e.popup._closeButton.removeAttribute("href");
+        e.popup._closeButton.style.cursor = "pointer";
+    });
+
     let mapmarkers = {map : map};
     const markers = [];
     for(const a of events)
@@ -238,12 +237,10 @@ function format_event_info(a, div = null)
 function format_event_popup(a)
 {
     const elem = document.getElementById('popup').content.cloneNode(true);
-    elem.querySelector('#place').innerText = `${a.dataset.city}, ${a.dataset.country}`;
-    elem.querySelector('#time').innerText = `${a.dataset.date}, ${a.dataset.time}`;
+    elem.querySelector('#place_name').innerText = [a.dataset.city, a.dataset.country].filter(s => s != '').join(', ');
+    elem.querySelector('#place_date').innerText = [a.dataset.date, a.dataset.time].filter(s => s != '').join(', ');
     return elem.firstChild;
 }
-
-var slideshow = null;
 
 function slideshow_stop()
 {
@@ -336,8 +333,6 @@ function get_search_query()
     return decodeURIComponent((new URLSearchParams(window.location.search).get('search') || '').replace('+', ' '));
 }
 
-var mapmarkers = {};
-
 function navigate(hash, search = '')
 {
     if(search != '')
@@ -392,8 +387,6 @@ function body_onload(timezone2country = {})
 
     const today_YYYY_MM_DD = new Date().toISOString().slice(0, 10);
 
-    const map = init_map('map');
-
     slideshow_global_init(Array.from(document.querySelectorAll('a.event:not([data-photohrefs=""])')).map(a => a.dataset.eventhash));
     switch_upcoming_events(today_YYYY_MM_DD);
     if(document.body.dataset.isindex == 'true')
@@ -401,7 +394,7 @@ function body_onload(timezone2country = {})
     populate_upcoming_events_in_country(today_YYYY_MM_DD, current_country);
     populate_upcoming_events_everywhere(today_YYYY_MM_DD);
 
-    [mapmarkers, markers_within_keys] = populate_map(map, document.querySelectorAll('#allevents > li > a.event:not([data-latlon=""])'));
+    [mapmarkers, markers_within_keys] = init_and_populate_map('map', document.querySelectorAll('#allevents > li > a.event:not([data-latlon=""])'));
 
     navigate(get_hash() == '' || get_hash() == '#' ? choose_random_event(markers_within_keys) : get_hash(), get_search_query());
 }

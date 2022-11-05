@@ -46,6 +46,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
+        <link href="https://tile.openstreetmap.org/{z}/{x}/{y}.png" id="link_tiles" />
+        
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -97,7 +99,6 @@
         {% endif %}
         {% endif %}
 
-        <link href="https://tile.openstreetmap.org/{z}/{x}/{y}.png" id="link_tiles" />
         <title>{{ page.title | xml_escape}}</title>
         <script>var timezone2country = {{ site.data.timezone2country | jsonify }};</script>
     </head>
@@ -129,7 +130,12 @@
 
             <div id="container">
                 <div id="map">
-                    <template id="popup"><div><h3 id="place"></h3><h4 id="time"></h4></div></template>
+                    <template id="popup">
+                        <div>
+                            <h3 id="place_name"></h3>
+                            <h4 id="place_date"></h4>
+                        </div>
+                    </template>
                 </div>
             </div>
             <div id="infopic">
