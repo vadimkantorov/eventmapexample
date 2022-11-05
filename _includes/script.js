@@ -198,8 +198,8 @@ function format_event_info(a, div = null)
     const lis = [], orgnames = [a.dataset.orgname.split(';'), a.dataset.orgurl.split(';')];
     for(let i = 0; i < orgnames[0].length; i++)
     {
-        const li = orgurls.firstChild.cloneNode(true);
-        const lia = li.firstChild;
+        const li = orgurls.firstElementChild.cloneNode(true);
+        const lia = li.firstElementChild;
         lia.innerText = orgnames[0][i] || lia.dataset.none;
         if(orgnames[1][i] != '')
             lia.href = orgnames[1][i];
@@ -239,7 +239,7 @@ function format_event_popup(a)
     const elem = document.getElementById('popup').content.cloneNode(true);
     elem.querySelector('#place_name').innerText = [a.dataset.city, a.dataset.country].filter(s => s != '').join(', ');
     elem.querySelector('#place_date').innerText = [a.dataset.date, a.dataset.time].filter(s => s != '').join(', ');
-    return elem.firstChild;
+    return elem.firstElementChild;
 }
 
 function slideshow_stop()
