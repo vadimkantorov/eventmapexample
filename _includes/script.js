@@ -57,7 +57,7 @@ function marker_onclick(e, slideshow = true)
 
 function init_and_populate_map(id, events)
 {
-    const map = L.map(id).setView([20, 0], 2);
+    const map = L.map(id);//.setView([20, 0], 2);
     L.tileLayer(decodeURI(document.getElementById('link_tiles').href), {attribution: document.getElementById('map_copyright').outerHTML.replace('hidden', ''), maxZoom: 19 }).addTo(map);
     map.on('popupopen', e =>
     {
