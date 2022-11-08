@@ -8,7 +8,6 @@
 {% assign campaign_name = "" %}
 
 {% assign events = "" | split: "," %}{% if index.events %}{% assign events = index.events %}{% endif %}
-<!-- {{ events | jsonify }} -->
 {% for p in site.pages %}{% if p.path contains "data/campaigns/" and p.layout != "events" %}{% assign events = events | push: p %}{% endif %}{% endfor %}
 {% for campaign in campaigns %}{% for event in campaign.events %}{% assign events = events | push: event %}{% endfor %}{% endfor %}
 
