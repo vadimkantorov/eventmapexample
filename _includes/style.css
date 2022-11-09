@@ -354,6 +354,12 @@ text-align: center; line-height: 1.4; font-size: 1.48rem; color: rgb(0, 131, 214
 list-style-type: none;
 padding: 0px
 }
+
+.campaignname
+{
+color:black !important;
+}
+
 .event,
 a.event,
 .campaign,
