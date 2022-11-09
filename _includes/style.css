@@ -145,19 +145,19 @@ margin: 0;
 margin-bottom: var(--card-section-gap);
 }
 
-#info #place_name
+.placename
 {
 font-size: 14px;
 font-weight: 700;
 }
 
-#info #place_date
+.placedate
 {
 font-size: 10px;
 color: gray;
 }
 
-#info #location
+.placelocation
 {
 margin: 0;
 margin-bottom: var(--card-section-gap);
