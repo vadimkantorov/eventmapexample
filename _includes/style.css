@@ -20,6 +20,14 @@ a:visited
 color: var(--color-link-visited);
 }
 
+.leaflet-popup-content
+{
+margin-left: 10px !important;
+margin-right: 20px !important;
+margin-top: 2px !important;
+margin-bottom: 0px !important;
+}
+
 .link_no_decoration
 {
 text-decoration: none;
