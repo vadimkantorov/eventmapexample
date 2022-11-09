@@ -357,7 +357,8 @@ padding: 0px
 
 .campaignname
 {
-color:black !important;
+font-size: 0.9em !important;
+color: gray !important;
 }
 
 .event,
