@@ -13,6 +13,12 @@ Below are described the file formats and the directory structure providing infor
 
 Fork this repo and create the `data` directory: `mkdir data`. This [GitHub docs link](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) has instructions on how to pull upstream changes into your fork.
 
+```
+# data/index/index.md
+
+
+```
+
 ## Campaign pages
 `data/campaigns/2022-my-campaign-name-for-url/2022-my-campaign-name-for-url.md`:
 ```yaml

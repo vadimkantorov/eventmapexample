@@ -3,6 +3,11 @@ title: "#RussiansAainstWar protest map"
 telegram: https://t.me/vadimkantorov
 logo: index.png
 
+organizers:
+  - orgname: Test organizer
+    orgurl: https://www.test.organizer
+    country: World
+
 events:
   - city: Yerevan
     address: Freedom Square
