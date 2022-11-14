@@ -268,13 +268,13 @@
 
             {% assign eventhashall = "" | split: "," %}
             {% for event in grouped_events %}
-                {% assign eventhash = campaign.url | remove_first: "/" | append: event.date | append: "-" | append: event.city | replace: "/", "_" | replace: " ", "_" | slugify | prepend: "#" %}
+                {% assign eventhash = campaign.url | remove_first: "/" | append: event.date | append: "-" | append: event.city | replace: "/", "_" | replace: " ", "_" | slugify | prepend: "#" | slugify %}
                 {% assign eventhashall = eventhashall | push: eventhash %}
             {% endfor %}
             {% assign eventhashall = eventhashall | join: ";" %}
             {% assign dateall = grouped_events | map: "date" | join: ";" %}
 
-            {% assign eventhash = campaign.url | remove_first: "/" | append: event.date | append: "-" | append: event.city | replace: "/", "_" | replace: " ", "_" | slugify | prepend: "#" %}
+            {% assign eventhash = campaign.url | remove_first: "/" | append: event.date | append: "-" | append: event.city | replace: "/", "_" | replace: " ", "_" | slugify | prepend: "#" | slugify %}
 
             {% assign campaign_logo = campaign.path | split: "/" | pop | join: "/" | prepend: "/" | prepend: site.github.url | append: "/" | append: campaign.logo %}
             {% assign event_logo = campaign.path | split: "/" | pop | join: "/" | prepend: "/" | prepend: site.github.url | append: "/" | append: event.logo %}
