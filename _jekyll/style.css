@@ -57,15 +57,13 @@ margin-right: 10px;
 {
 fill: hsl(230, 69%, 50%);
 fill-opacity: 1.0;
-stroke: "yellow";
-stroke-width: 15px;
 }
 
 .markerpast
 {
 fill: hsl(215, 59%, 53%);
 fill-opacity: 1.0;
-stroke: "yellow";
+
 stroke-width: 15px;
 }
 
