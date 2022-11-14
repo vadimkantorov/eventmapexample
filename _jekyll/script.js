@@ -383,7 +383,7 @@ function navigate(hash, search = '')
 function body_onload(timezone2country = {})
 {
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const current_country = timezone2country[timezone];
+    const current_country = timezone2country[timezone] || '';
 
     const today_YYYY_MM_DD = new Date().toISOString().slice(0, 10);
 
@@ -391,7 +391,7 @@ function body_onload(timezone2country = {})
     switch_upcoming_events(today_YYYY_MM_DD);
     if(document.body.dataset.isindex == 'true')
         switch_upcoming_campaigns(today_YYYY_MM_DD);
-    populate_upcoming_events_in_country(today_YYYY_MM_DD, current_country || '');
+    populate_upcoming_events_in_country(today_YYYY_MM_DD, current_country);
     populate_upcoming_events_everywhere(today_YYYY_MM_DD);
 
     [mapmarkers, markers_within_keys] = init_and_populate_map('map', document.querySelectorAll('#allevents > li > a.event:not([data-latlon=""])'));
