@@ -18,7 +18,7 @@
         {% assign campaigns = "" | split: "," %}
     {% endif %}
 
-    {% assign campaigns_extra = site.pages | where_exp: "p", "p.path contains 'data/campaigns/' | where_exp: "p", "p.layout == 'events'" %}
+    {% assign campaigns_extra = site.pages | where_exp: "p", "p.path contains 'data/campaigns/'" | where_exp: "p", "p.layout == 'events'" %}
     {% for p in campaigns_extra %}{% assign campaigns = campaigns | push: p %}{% endfor %}
 
     {% if index.events %}
