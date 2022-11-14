@@ -1,3 +1,8 @@
+<!-- 
+{% assign isindex = page.path == "data/index/index.md" %}
+{{ isindex }}
+-->
+
 {% if page.path == "data/index/index.md" %}
     {% assign isindex = true %}
 {% endif %}
@@ -18,7 +23,7 @@
         {% endif %}
     {% endfor %}
 
-    {% if index.events %}{
+    {% if index.events %}
         {% assign events = index.events %}
     {% else %}
         {% assign events = "" | split: "," %}
