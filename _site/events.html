@@ -1,33 +1,39 @@
 {% if page.name == "index.md" %}{% assign isindex = true %}{% endif %}
 
-{% assign campaigns = "" | split: "," %}{% for p in site.pages %}{% if p.path contains "data/campaigns/" and p.layout == "events" %}{% assign campaigns = campaigns | push: p %}{% endif %}{% endfor %}{% assign campaigns = campaigns | sort: "name" %}
+{% assign campaigns = "" | split: "," %}
+{% for p in site.pages %}
+    {% if p.path contains "data/campaigns/" and p.layout == "events" %}
+        {% assign campaigns = campaigns | push: p %}
+    {% endif %}
+{% endfor %}
+
+{% assign campaigns = campaigns | sort: "name" %}
 
 {% if isindex %}
 
-{% assign index = page %}
-{% assign campaign_name = "" %}
+    {% assign index = page %}
+    {% assign campaign_name = "" %}
 
-{% assign events = "" | split: "," %}{% if index.events %}{% assign events = index.events %}{% endif %}
-{% for p in site.pages %}{% if p.path contains "data/campaigns/" and p.layout != "events" %}{% assign events = events | push: p %}{% endif %}{% endfor %}
-{% for campaign in campaigns %}{% for event in campaign.events %}{% assign events = events | push: event %}{% endfor %}{% endfor %}
-
-{% else %}
-
-{% assign index = "" %}{% for p in site.pages %}{% if p.path == "data/index/index.md" %}{% assign index = p %}{% endif %}{% endfor %}
-{% assign campaign = page %}
-{% assign campaign_name = page.name | replace: ".md", "" %}
-
-{% assign events = "" | split: "," %}{% if campaign.events %}{% assign events = campaign.events %}{% endif %}
-{% for p in site.pages %}{% if p.path contains "data/campaigns/" and p.dir contains campaign_name and p.layout != "events" %}{% assign events = events | push: p %}{% endif %}{% endfor %}
-
-{% endif %}
-
-{% assign events_grouped_by_country = events | sort: "country" | group_by: "country" %}
-{% assign organizers = "" | split: "," %}
-
-{% if isindex %}
+    {% if index.events %}{
+        % assign events = index.events %}
+    {% else %}
+        {% assign events = "" | split: "," %}
+    {% endif %}
+    {% for p in site.pages %}
+        {% if p.path contains "data/campaigns/" and p.layout != "events" %}
+            {% assign events = events | push: p %}
+        {% endif %}
+    {% endfor %}
+    {% for campaign in campaigns %}
+        {% for event in campaign.events %}
+            {% assign events = events | push: event %}
+        {% endfor %}
+    {% endfor %}
+    
     {% if index.organizers %}
         {% assign organizers = index.organizers %}
+    {% else %}
+        {% assign organizers = "" | split: "," %}
     {% endif %}
     {% for campaign in campaigns %}
         {% if campaign.organizers %}
@@ -36,14 +42,45 @@
             {% endfor %}
         {% endif %}
     {% endfor %}
+
 {% else %}
+    {% assign campaign = page %}
+    {% assign campaign_name = page.name | replace: ".md", "" %}
+
+    {% assign index = "" %}
+    {% for p in site.pages %}
+        {% if p.path == "data/index/index.md" %}
+            {% assign index = p %}
+        {% endif %}
+    {% endfor %}
+
+    {% if campaign.events %}
+        {% assign events = campaign.events %}
+    {% else %}
+        {% assign events = "" | split: "," %}
+    {% endif %}
+    {% for p in site.pages %}
+        {% if p.path contains "data/campaigns/" and p.dir contains campaign_name and p.layout != "events" %}
+            {% assign events = events | push: p %}
+        {% endif %}
+    {% endfor %}
+    
     {% if campaign.organizers %}
         {% assign organizers = campaign.organizers %}
+    {% else %}
+        {% assign organizers = "" | split: "," %}
     {% endif %}
+
 {% endif %}
 
-{% for event in events %}{% if event.orgname %}{% assign organizers = organizers | push: event %}{% endif %}{% endfor %}
+{% for event in events %}
+    {% if event.orgname %}
+        {% assign organizers = organizers | push: event %}
+    {% endif %}
+{% endfor %}
+
 {% assign organizers_grouped_by_country = organizers | sort: "country" | group_by: "country" %}
+{% assign events_grouped_by_country = events | sort: "country" | group_by: "country" %}
 
 <!DOCTYPE html>
 <html lang="en-US">
