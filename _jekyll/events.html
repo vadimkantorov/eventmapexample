@@ -347,13 +347,12 @@
 
         {%- endfor -%}
         
-        {%- for item in country_organizers_multiple -%}
-            {%- for orgname in item.orgname -%}
-            {%- assign orgurl = item.orgurl[forloop.index0] -%}
-            <li class="organizer" data-search="{{ item.country | downcase }} {{ item.city | downcase }}"><a target="_blank" href="{{ orgurl }}"><div>{{ orgname }}, {{ item.city }}, {{ item.country }}</div><div class="subtitle">1 events</div></a></li>
-            {%- endfor -%}
-
-        {%- endfor -%}
+        {% for item in country_organizers_multiple %}
+            {% for orgname in item.orgname %}
+                {% assign orgurl = item.orgurl[forloop.index0] %}
+                <li class="organizer" data-search="{{ item.country | downcase }} {{ item.city | downcase }}"><a target="_blank" href="{{ orgurl }}"><div>{{ orgname }}, {{ item.city }}, {{ item.country }}</div><div class="subtitle">1 events</div></a></li>
+            {% endfor %}
+        {% endfor %}
 
         {% endfor %}
 
