@@ -8,6 +8,13 @@ organizers:
     orgurl: https://www.test.organizer
     country: World
 
+campaigns:
+  - title: Test campaign
+    date: 
+     - 2022-02-20
+     - 2022-11-28
+    logo: 2022-stopmurderization.jpg
+
 events:
   - city: Yerevan
     address: Freedom Square
