@@ -1,6 +1,7 @@
 # https://www.wikidata.org/wiki/Wikidata:SPARQL_tutorial/en
 # https://github.com/OSMNames/OSMNames, http://github.com/OSMNames/OSMNames/issues/208
 # https://osmnames.org/download/
+# https://nominatim.openstreetmap.org/search?format=json&limit=1&city=Amsterdam
 
 import json
 import urllib.parse
