@@ -1,5 +1,6 @@
 data_dir: .
-layouts_dir: _includes
+layouts_dir: _site
+includes_dir: _site
 
 defaults:
   - scope:
