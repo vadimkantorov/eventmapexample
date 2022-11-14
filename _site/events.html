@@ -94,7 +94,7 @@
     {% endif %}
 {% endfor %}
 
-{% assign campaigns = campaigns | sort: "name", "last" %}
+<!-- assign campaigns = campaigns | sort: "name", "last" -->
 {% assign organizers_grouped_by_country = organizers | sort: "country" | group_by: "country" %}
 {% assign events_grouped_by_country = events | sort: "country" | group_by: "country" %}
 
