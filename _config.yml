@@ -20,3 +20,6 @@ defaults:
 
 plugins:
   - jekyll-optional-front-matter
+
+#includes:
+#- patterns
