@@ -14,7 +14,7 @@
     {% assign extra = site.pages | where_exp: "p", "p.path contains 'data/campaigns/'" | where_exp: "p", "p.layout == 'events'" %}{% for p in extra %}{% assign campaigns = campaigns | push: p %}{% endfor %}
 
     {% if index.events %}{% assign events = index.events %}{% endif %}
-    {% assign extra = site.pages | where_exp: "p", "p.path contains 'data/campaigns/'" | where_exp: "p", "p.layout != 'events' %}{% for p in extra %}{% assign events = events | push: p %}{% endfor %}
+    {% assign extra = site.pages | where_exp: "p", "p.path contains 'data/campaigns/'" | where_exp: "p", "p.layout != 'events'" %}{% for p in extra %}{% assign events = events | push: p %}{% endfor %}
     
     {% for campaign in campaigns %}
         {% for event in campaign.events %}
@@ -42,7 +42,7 @@
 
 
     {% if campaign.events %}{% assign events = campaign.events %}{% endif %}
-    {% assign extra = site.pages | where_exp: "p", "p.path contains 'data/campaigns/'" | where_exp: "p", "p.layout != 'events' | where_exp: "p", "p.dir contains campaign_name" %}{% for p in extra %}{% assign events = events | push: p %}{% endfor %}
+    {% assign extra = site.pages | where_exp: "p", "p.path contains 'data/campaigns/'" | where_exp: "p", "p.layout != 'events'" | where_exp: "p", "p.dir contains campaign_name" %}{% for p in extra %}{% assign events = events | push: p %}{% endfor %}
     
     {% if campaign.organizers %}{% assign organizers = campaign.organizers %}{% endif %}
 
