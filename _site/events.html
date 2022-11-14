@@ -51,12 +51,7 @@
     {% assign campaign = page %}
     {% assign campaign_name = page.name | replace: ".md", "" %}
 
-    {% assign index = "" %}
-    {% for p in site.pages %}
-        {% if p.path == "data/index/index.md" %}
-            {% assign index = p %}
-        {% endif %}
-    {% endfor %}
+    {% assign index = site.pages | find: "path", "data/index/index.md" %}
     
     {% if index.campaigns %}
         {% assign campaigns = index.campaigns %}
@@ -94,9 +89,9 @@
     {% endif %}
 {% endfor %}
 
-<!-- assign campaigns = campaigns | sort: "name", "last" -->
-{% assign organizers_grouped_by_country = organizers | sort: "country" | group_by: "country" %}
-{% assign events_grouped_by_country = events | sort: "country" | group_by: "country" %}
+{% assign campaigns = campaigns | sort: "title", "last" %}
+{% assign organizers_grouped_by_country = organizers | sort: "country", "last" | group_by: "country" %}
+{% assign events_grouped_by_country = events | sort: "country", "last" | group_by: "country" %}
 
 <!DOCTYPE html>
 <html lang="en-US">
