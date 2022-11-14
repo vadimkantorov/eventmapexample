@@ -73,11 +73,7 @@ function init_and_populate_map(id, events)
             continue;
 
         const latlon = a.dataset.latlon.split(',').map(parseFloat);
-        const marker = L.circleMarker(latlon, {
-            radius: 1,//5
-            //stroke: false,
-            className: a.parentElement.classList.contains('eventactive') ? 'markerupcoming' : 'markerpast'
-        });
+        const marker = L.circleMarker(latlon, { radius: 1, className: a.parentElement.classList.contains('eventactive') ? 'markerupcoming' : 'markerpast' });
         marker.addTo(map);
         marker.bindPopup(format_event_popup(a).outerHTML);
         marker.on('click', marker_onclick);
