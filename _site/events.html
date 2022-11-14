@@ -53,9 +53,6 @@
 
     {% assign index = site.pages | where: "path", "data/index/index.md" | first %}
     
-    <!-- {{ index | jsonify }} -->
-    <!-- {{ site.pages | jsonify }} -->
-
     {% if index.campaigns %}
         {% assign campaigns = index.campaigns %}
     {% else %}
