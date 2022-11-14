@@ -19,7 +19,7 @@
     {% endfor %}
 
     {% if index.events %}{
-        % assign events = index.events %}
+        {% assign events = index.events %}
     {% else %}
         {% assign events = "" | split: "," %}
     {% endif %}
