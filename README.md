@@ -105,15 +105,9 @@ Index record fields:
 - `title` (mandatory; string)
 - `logo` (optional; string)
 - `content` (optional; string for intro text markdown)
-
-Campaign record fields:
-- `title` (mandatory; string)
-- `logo` (optional; string)
-- `country` (mandatory; string)
-- `date` (mandatory; string in YYYY-MM-DD format)
 - `events` (optional; array of event records)
+- `campaigns` (optional; array of campaign records)
 - `organizers` (optional; array of organizer records)
-- `content` (optional; string for intro text markdown)
 
 Organizer record fields:
 - `country` (mandatory; string)
@@ -121,18 +115,28 @@ Organizer record fields:
 - `orgname` (optional; string)
 - `orgurl` (optional; string)
 
+Campaign record fields:
+- `country` (mandatory; string)
+- `title` (mandatory; string)
+- `logo` (optional; string)
+- `date` (mandatory; string in YYYY-MM-DD format)
+- `events` (optional; array of event records)
+- `organizers` (optional; array of organizer records)
+- `content` (optional; string for intro text markdown)
+
 Event record fields:
 - `country` (mandatory; string)
 - `city` (optional; string)
+- `orgname` (optional; string or array of strings)
+- `orgurl` (optional; string or array of strings)
 - `date` (mandatory; string in YYYY-MM-DD format)
 - `address` (optional; string)
 - `location` (optional; string)
 - `time` (optional; string)
 - `eventurl` (optional; string)
 - `photos` (optional; semicolon-delimited string or array of strings)
-- `orgname` (optional; string or array of strings)
-- `orgurl` (optional; string or array of strings)
 - `content` (optional; string for intro text markdown)
+- `campaign` (optional; string for intro text markdown)
 
 ## Geocoding information
 Sample of a few lines from `geocoder.json`:
