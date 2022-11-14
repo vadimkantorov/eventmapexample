@@ -225,56 +225,56 @@
 
             {% assign dateall = grouped_events | map: "date" | join: ";" %}
 
-            {% for event in grouped_events %}
-            {% if forloop.first %}{% assign eventcity = forloop.first %}{% endif %}
+            {%- for event in grouped_events -%}
+            {%- if forloop.first -%}{%- assign eventcity = forloop.first -%}{%- endif -%}
 
-            {% assign photos = "" | split: "," %}
-            {% if event.photos %}
-                {% if event.photos.first %}
-                    {% assign event_photos = event.photos %}
-                {% else %}
-                    {% assign event_photos = event.photos | remove: " " | split: ";" %}
-                {% endif %}
-                {% for photo in event_photos %}
-                    {% if photo contains "https://" %}
-                        {% assign httpsphoto = photo %}
-                    {% else %}
-                        {% assign httpsphoto = campaign.path | split: "/" | pop | join: "/" | prepend: "/" | prepend: site.github.url | append: "/" | append: photo %}
-                    {% endif %}
-                    {% assign photos = photos | push: httpsphoto %}
-                {% endfor %}
-            {% else %}
-                {% for p in site.static_files %}
-                    {% if event.dir and p.extname == ".jpg" and p.path contains event.dir %}
-                        {% assign photo = site.github.url | append: p.path %}
-                        {% assign photos = photos | push: photo %}
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
+            {%- assign photos = "" | split: "," -%}
+            {%- if event.photos -%}
+                {%- if event.photos.first -%}
+                    {%- assign event_photos = event.photos -%}
+                {%- else -%}
+                    {%- assign event_photos = event.photos | remove: " " | split: ";" -%}
+                {%- endif -%}
+                {%- for photo in event_photos -%}
+                    {%- if photo contains "https://" -%}
+                        {%- assign httpsphoto = photo -%}
+                    {%- else -%}
+                        {%- assign httpsphoto = campaign.path | split: "/" | pop | join: "/" | prepend: "/" | prepend: site.github.url | append: "/" | append: photo -%}
+                    {%- endif -%}
+                    {%- assign photos = photos | push: httpsphoto -%}
+                {%- endfor -%}
+            {%- else -%}
+                {%- for p in site.static_files -%}
+                    {%- if event.dir and p.extname == ".jpg" and p.path contains event.dir -%}
+                        {%- assign photo = site.github.url | append: p.path -%}
+                        {%- assign photos = photos | push: photo -%}
+                    {%- endif -%}
+                {%- endfor -%}
+            {%- endif -%}
 
-            {% assign campaign = nil %}
-            {% for _campaign in campaigns %}
-                {% assign campaign_path = _campaign.path | split: "/" | pop | join: "/" %}
-                {% if event.dir contains campaign_path and  _campaign.path contains "data/campaigns/" and _campaign.layout == "events" %}
-                    {% assign campaign = _campaign %}
-                    {% break %}
-                {% endif %}
-                {% for _event in _campaign.events %}
-                    {% if event == _event %}
-                        {% assign campaign = _campaign %}
-                        {% break %}
-                    {% endif %}
-                {% endfor %}
-            {% endfor %}
+            {%- assign campaign = nil -%}
+            {%- for _campaign in campaigns -%}
+                {%- assign campaign_path = _campaign.path | split: "/" | pop | join: "/" -%}
+                {%- if event.dir contains campaign_path and  _campaign.path contains "data/campaigns/" and _campaign.layout == "events" -%}
+                    {%- assign campaign = _campaign -%}
+                    {%- break -%}
+                {%- endif -%}
+                {%- for _event in _campaign.events -%}
+                    {%- if event == _event -%}
+                        {%- assign campaign = _campaign -%}
+                        {%- break -%}
+                    {%- endif -%}
+                {%- endfor -%}
+            {%- endfor -%}
 
-            {% assign eventhashall = "" | split: "," %}
-            {% for event in grouped_events %}
-            {% assign eventhash = campaign.url | remove_first: "/" | append: event.date | append: "-" | append: event.city | replace: "/", "_" | replace: " ", "_" | slugify | prepend: "#" %}
-            {% assign eventhashall = eventhashall | push: eventhash %}
-            {% endfor %}
-            {% assign eventhashall = eventhashall | join: ";" %}
+            {%- assign eventhashall = "" | split: "," -%}
+            {%- for event in grouped_events -%}
+            {%- assign eventhash = campaign.url | remove_first: "/" | append: event.date | append: "-" | append: event.city | replace: "/", "_" | replace: " ", "_" | slugify | prepend: "#" -%}
+            {%- assign eventhashall = eventhashall | push: eventhash -%}
+            {%- endfor -%}
+            {%- assign eventhashall = eventhashall | join: ";" -%}
 
-            {% assign eventhash = campaign.url | remove_first: "/" | append: event.date | append: "-" | append: event.city | replace: "/", "_" | replace: " ", "_" | slugify | prepend: "#" %}
+            {%- assign eventhash = campaign.url | remove_first: "/" | append: event.date | append: "-" | append: event.city | replace: "/", "_" | replace: " ", "_" | slugify | prepend: "#" -%}
 
             {%- assign campaign_logo = campaign.path | split: "/" | pop | join: "/" | prepend: "/" | prepend: site.github.url | append: "/" | append: campaign.logo -%}
             {%- assign event_logo = campaign.path | split: "/" | pop | join: "/" | prepend: "/" | prepend: site.github.url | append: "/" | append: event.logo -%}

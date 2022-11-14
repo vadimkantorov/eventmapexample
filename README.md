@@ -145,7 +145,7 @@ Event record fields:
 - `campaign` (optional; string for intro text markdown)
 
 ## Geocoding information
-Sample of a few lines from `geocoder.json`:
+Sample lines from `geocoder.json`:
 ```json
 {
     "London": "51.5073219,-0.1276474",
