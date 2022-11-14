@@ -5,26 +5,26 @@
 
 An event map consists of the main page and of campaign pages. Each campaign consists of multiple events. The main page lists all events from all campaigns.
 
-See an example of an event map at https://vadimkantorov.github.io/eventmaptest, and its contents at https://github.com/vadimkantorov/eventmaptest (its [`data`](https://github.com/vadimkantorov/eventmaptest/tree/gh-pages/data) is based on the content of https://taplink.cc/stopmurderization and https://www.facebook.com/freerussiansglobal).
+See an example of an event map at https://vadimkantorov.github.io/eventmaptest, and its contents at https://github.com/vadimkantorov/eventmaptest (its [`db`](https://github.com/vadimkantorov/eventmaptest/tree/gh-pages/db) is based on the content of https://taplink.cc/stopmurderization and https://www.facebook.com/freerussiansglobal).
 
 Below are described the file formats and the directory structure providing information about campaigns, events and the main page.
 
-## Setting up instructions and minimal directory structure of `data` directory
+## Setting up instructions and minimal directory structure of `db` directory
 
-Fork this repo and create the `data` directory: `mkdir data`. This [GitHub docs link](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) has instructions on how to pull upstream changes into your fork.
+Fork this repo and create the `db` directory: `mkdir db`. This [GitHub docs link](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) has instructions on how to pull upstream changes into your fork.
 
 ```
-# data/index/index.md
+# db/index/index.md
 
 
 ```
 
 ## Campaign pages
-`data/campaigns/2022-my-campaign-name-for-url/2022-my-campaign-name-for-url.md`:
+`db/campaigns/2022-my-campaign-name-for-url/2022-my-campaign-name-for-url.md`:
 ```yaml
 ---
 title: campaign page header text
-logo:  main page logo, absolute https-path or file path relative to data/index/ e.g. index.jpg would refer to data/index/index.jpg 
+logo:  main page logo, absolute https-path or file path relative to db/index/ e.g. index.jpg would refer to db/index/index.jpg 
 date: # one date in YYYY-MM-DD format or array of two dates
   - 2022-02-20
   - 2022-11-28
@@ -77,7 +77,7 @@ events: # array of following records
 ```
 
 ## Main page
-`data/index/index.md`:
+`db/index/index.md`:
 ```yaml
 ---
 title: same as for campaign pages
@@ -86,12 +86,12 @@ logo:  same as for campaign pages
 (markdown) same as for campaign pages
 ```
 
-In general, main page file format is same as for campaign pages, but the paths are computed relative to `data/index/` instead of `data/campaigns/my-campaign-name`.
+In general, main page file format is same as for campaign pages, but the paths are computed relative to `db/index/` instead of `db/campaigns/my-campaign-name`.
 
 
 ## Event info
-`data/campaigns/2022-my-campaign-name-for-url/2022-09-27-yerevan/photo1.jpg`,
-`data/campaigns/2022-my-campaign-name-for-url/2022-09-27-yerevan/2022-09-27-yerevan.md`:
+`db/campaigns/2022-my-campaign-name-for-url/2022-09-27-yerevan/photo1.jpg`,
+`db/campaigns/2022-my-campaign-name-for-url/2022-09-27-yerevan/2022-09-27-yerevan.md`:
 ```yaml
 ---
 city: Yerevan
