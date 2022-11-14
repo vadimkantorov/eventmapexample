@@ -1,4 +1,5 @@
 data_dir: .
+layouts_dir: _includes
 
 defaults:
   - scope:
@@ -20,6 +21,3 @@ defaults:
 
 plugins:
   - jekyll-optional-front-matter
-
-#includes:
-#- patterns
