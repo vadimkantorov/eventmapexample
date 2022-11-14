@@ -57,6 +57,8 @@ margin-right: 10px;
 {
 fill: hsl(230, 69%, 50%);
 fill-opacity: 1.0;
+
+stroke-width: 5px;
 }
 
 .markerpast
@@ -64,7 +66,7 @@ fill-opacity: 1.0;
 fill: hsl(215, 59%, 53%);
 fill-opacity: 1.0;
 
-stroke-width: 15px;
+stroke-width: 5px;
 }
 
 .markerhighlighted
