@@ -1,5 +1,5 @@
+{% assign isindex = page.path contains "data/index/index.md" %}
 <!-- 
-{% assign isindex = page.path == "data/index/index.md" %}
 {{ isindex }}
 -->
 
@@ -17,11 +17,9 @@
     {% else %}
         {% assign campaigns = "" | split: "," %}
     {% endif %}
-    {% for p in site.pages %}
-        {% if p.path contains "data/campaigns/" and p.layout == "events" %}
-            {% assign campaigns = campaigns | push: p %}
-        {% endif %}
-    {% endfor %}
+
+    {% assign campaigns_extra = site.pages | where_exp: "p", "p.path contains 'data/campaigns/' | where_exp: "p", "p.layout == 'events'" %}
+    {% for p in campaigns_extra %}{% assign campaigns = campaigns | push: p %}{% endfor %}
 
     {% if index.events %}
         {% assign events = index.events %}
