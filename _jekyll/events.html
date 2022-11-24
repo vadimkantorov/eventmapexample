@@ -168,7 +168,7 @@
                         </div>
                         <div id="links_event">
                             <a target="_blank" id="eventurl" href="" class="link_never_visited">Event Link<span class="none" hidden>&nbsp;not provided yet</span></a>
-                            <br />by <ul id="orgurls"><li><a target="_blank" class="link_never_visited" data-none="an unknown organizer"></a></li></ul>
+                            <br />by <ul id="orgurls"><li><a target="_blank" href="" class="link_never_visited" data-none="an unknown organizer"></a></li></ul>
                         </div>
 
                         <div class="eventdescription"></div>
@@ -176,7 +176,7 @@
                     <div id="picbox" hidden>
                         <img alt="Event photo" data-photohrefs="" data-photohrefsidx="" data-photohrefsalt="" data-photohrefshash="" onclick="img_onclick()" id="eventphoto" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-srcempty="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-altempty="Event photo" />
                         <div id="picbox_overlay">
-                            <a target="_blank" id="picbox_overlay_credits" class="link_never_visited link_no_decoration">Copyright</a>&nbsp;|&nbsp;<a id="picbox_overlay_link" href="#" class="link_never_visited link_no_decoration">&nbsp;</a>
+                            <a target="_blank" id="picbox_overlay_credits" href="" class="link_never_visited link_no_decoration">Copyright</a>&nbsp;|&nbsp;<a id="picbox_overlay_link" href="#" class="link_never_visited link_no_decoration">&nbsp;</a>
                         </div>
                     </div>
             </div>
@@ -210,7 +210,7 @@
         </summary>
 
         <ul id="allevents" class="events">
-            <li class="none"{% if events_grouped_by_country.size > 0 %}hidden{% endif %}><div class="eventsnoneerror">No events</div></li>
+            <li class="none" {% if events_grouped_by_country.size > 0 %}hidden{% endif %}><div class="eventsnoneerror">No events</div></li>
 
             {% for country_events in events_grouped_by_country %}
             {% assign grouped_events = country_events.items | sort: "date" | reverse %}
