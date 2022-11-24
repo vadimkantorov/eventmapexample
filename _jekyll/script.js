@@ -55,10 +55,11 @@ function marker_onclick(e, slideshow = true)
     }
 }
 
-function init_and_populate_map(id, events)
+function init_and_populate_map(id, events, tile_url_pattern = "https://tile.openstreetmap.org/{z}/{x}/{y}.png")
+        
 {
     const map = L.map(id);//.setView([20, 0], 2);
-    L.tileLayer(decodeURI(document.getElementById('link_tiles').href), {attribution: document.getElementById('map_copyright').outerHTML.replace('hidden', ''), maxZoom: 19 }).addTo(map);
+    L.tileLayer(tile_url_pattern, {attribution: document.getElementById('map_copyright').outerHTML.replace('hidden', ''), maxZoom: 19 }).addTo(map);
     map.on('popupopen', e =>
     {
         e.popup._closeButton.removeAttribute("href");

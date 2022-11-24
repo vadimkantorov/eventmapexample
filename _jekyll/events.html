@@ -61,8 +61,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-        <link href="https://tile.openstreetmap.org/{z}/{x}/{y}.png" id="link_tiles" />
-        
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -361,7 +359,7 @@
     <footer>
 
         <hr />
-        <div class="center">created with <a target="_blank" href="https://github.com/vadimkantorov/eventmap">https://github.com/vadimkantorov/eventmap</a>, rendered with jekyll at {{ site.time | date_to_xmlschema }}<a hidden target="_blank" id="map_copyright" href="http://osm.org/copyright">map &copy; OpenStreetMap</a></div>
+        <div class="center">created with <a class="link_never_visited" target="_blank" href="https://github.com/vadimkantorov/eventmap">https://github.com/vadimkantorov/eventmap</a>, rendered with jekyll at {{ site.time | date_to_xmlschema }}<a class="link_never_visited" hidden target="_blank" id="map_copyright" href="http://osm.org/copyright">map &copy; OpenStreetMap</a></div>
 
     </footer>
     </body>
