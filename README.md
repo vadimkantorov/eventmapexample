@@ -169,4 +169,5 @@ Crude geocoding based on city is used if an event doesn't provide custom GPS coo
 - photo crops
 - link for adding custom events
 - escape html
+- http://jsfiddle.net/ke9okv2g/2/
 ```
